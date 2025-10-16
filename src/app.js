@@ -1,11 +1,9 @@
-
 import express from 'express';
 import cors from 'cors';
 import { notfoundHandler, errorHandler } from './utilites/errorHandler.js';
 import dotenv from 'dotenv';
 dotenv.config();
 const app = express();
-
 
 
 app.use(express.json({
