@@ -6,10 +6,9 @@ import ApiResponse  from "../utilites/ApiResponse.js";
 const router = express.Router();
 
 // 🖼 Single image upload route
-router.post(
-  "/upload-image",
+router.route("/add-image").post(
   uploadHandler({
-    destination: "public/uploads/images",
+    destination: "public/uploads",
     maxSize: 3 * 1024 * 1024, // 3MB
     allowedTypes: ["image/jpeg", "image/png"],
     mode: "single",
@@ -26,8 +25,7 @@ router.post(
 );
 
 // Multiple file upload route
-router.post(
-  "/upload-documents",
+router.route("/add-documents").post(
   uploadHandler({
     destination: "public/uploads/docs",
     maxSize: 10 * 1024 * 1024, // 10MB

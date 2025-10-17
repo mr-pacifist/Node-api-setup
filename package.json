@@ -3,10 +3,10 @@
   "version": "1.0.0",
   "description": "initial project setup for node server api",
   "type": "module",
-  "main": "app.js",
+  "main": "server.js",
   "scripts": {
-    "start": "node src/app.js",
-    "dev": "nodemon -r dotenv/config --experimental-json-modules src/app.js"
+    "start": "node src/server.js",
+    "dev": "nodemon -r dotenv/config --experimental-json-modules src/server.js"
   },
   "repository": {
     "type": "git",

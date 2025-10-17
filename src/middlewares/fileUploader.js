@@ -1,7 +1,7 @@
 
 import multer from "multer";
-import { ApiResponse } from "../utilities/ApiResponse.js";
-import uploader from "../utilities/uploader.js";
+import ApiResponse  from "../utilites/ApiResponse.js";
+import uploader from "../utilites/uploader.js";
 
 export const uploadHandler = ({
   destination, //- Upload directory
