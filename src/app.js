@@ -1,38 +1,26 @@
 import express from 'express';
+import cookieParser from 'cookie-parser';
 import cors from 'cors';
-import { notfoundHandler, errorHandler } from './utilites/errorHandler.js';
-import dotenv from 'dotenv';
-dotenv.config();
+import routes from './routes/index.js';
+import { notfoundHandler, errorHandler } from './utils/errorHandler.js';
+
 const app = express();
 
-
-app.use(express.json({
-    limit: '16kb'
-}));
-
-app.use(express.urlencoded({
-    extended: true,
-    limit: '16kb'
-}))
-
+app.use(express.json({ limit: '16kb' }));
+app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'));
+app.use(cookieParser(process.env.COOKIE_SECRET));
 
-// enable CORS
 app.use(cors({
-    origin: process.env.CORS_ORIGIN,
-    credentials: true
+  origin: process.env.CORS_ORIGIN,
+  credentials: true,
 }));
 
+// Register all routes
+//app.use('/api/v1', routes);
 
-
-
-// 404 not found handler
+// Error handling
 app.use(notfoundHandler);
-
-// error handler
 app.use(errorHandler);
 
-const port = process.env.PORT || 3444;
-app.listen(port, () => {
-    console.log(`Server is running on port : ${port}`);
-});
+export default app;
